@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 1;
+    }
+
+    .texto-disco {
+      font-size: 36px;
+      font-weight: bold;
+      animation: discoteca 2s infinite;
+      margin: 10px 0;
+    }
+
+    .texto-verde {
+      font-size: 32px;
+      font-weight: bold;
+      color: limegreen;
+      margin: 10px 0;
+    }
+
+    @keyframes discoteca {
+      0%   { color: red; }
+      20%  { color: orange; }
+      40%  { color: yellow; }
+      60%  { color: green; }
+      80%  { color: blue; }
+      100% { color: violet; }
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: moveStar linear infinite;
+    }
+
+    @keyframes moveStar {
+      0% {
+        transform: translateY(0px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="star-container"></div>
+
+  <div class="container">
+    <p class="texto-disco">PÁGINA BAJADA SOMBRX 7ZZ</p>
+    <p class="texto-verde">7ZZ RENACIENDO</p>
+  </div>
+
+  <script>
+    // Crear estrellas
+    const container = document.getElementById('star-container');
+    const numStars = 150;
+
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${2 + Math.random() * 4}s`;
+      container.appendChild(star);
+    }
+  </script>
+</body>
+</html>
